@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Employee from './Employee.jsx';
 import { Button, Modal } from 'react-bootstrap';
 import { EmployeeContext } from '../context/EmployeeContext.jsx';
@@ -13,6 +13,10 @@ const EmployeeList = () => {
   const handleClose = () => setShow(false);
   const handleShow = ()=> setShow(true)
 
+
+  useEffect(() => {
+      handleClose();
+  }, [employees])
   return (
   <>
     <div className="table-title">
