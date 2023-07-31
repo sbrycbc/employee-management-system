@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import Employee from './Employee.jsx';
 import { Button, Modal } from 'react-bootstrap';
 import { EmployeeContext } from '../context/EmployeeContext.jsx';
@@ -17,6 +17,16 @@ const EmployeeList = () => {
   useEffect(() => {
       handleClose();
   }, [employees])
+
+  const myRef = useRef(null);
+  console.log(myRef.current);
+
+  const onButtonClick = () => {
+      console.log(myRef.current);
+      myRef.current.focus();
+  }
+
+
   return (
   <>
     <div className="table-title">
@@ -59,6 +69,9 @@ const EmployeeList = () => {
                 </Button>
             </Modal.Footer>
         </Modal>
+
+        <input ref={myRef} type="text"></input>
+        <button onClick={onButtonClick}>Focus Input</button>
 
   </>
   )
