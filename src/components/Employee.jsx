@@ -5,7 +5,7 @@ import { useContext } from 'react';
 
 
 
-const Employee = ({employees}) => {
+const Employee = ({employee}) => {
 
     const {deleteEmployee} = useContext(EmployeeContext);
 
@@ -13,9 +13,8 @@ const Employee = ({employees}) => {
     return (
 
         <>
-        {
-            employees.map((employee) => (
-            <tr key={employee.id}>
+        
+
                 <td>{employee.name}</td>
                 <td>{employee.email}</td>
                 <td>{employee.address}</td>
@@ -24,12 +23,10 @@ const Employee = ({employees}) => {
                     <button className="btn text-dark btn_act" data-toggle="modal"><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></button>
                     <button onClick={() => deleteEmployee(employee.id)} className="btn text-danger btn_act" data-toggle="modal"><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></button>
                 </td>
-            </tr>
-            ))
-        }
+            
+        
          </>
-
     )
-}
+    }
 
 export default Employee;
