@@ -8,7 +8,7 @@ import AddForm from './AddForm.jsx';
 
 const EmployeeList = () => {
 
-  const {employees} = useContext(EmployeeContext)
+  const {sortedEmployees} = useContext(EmployeeContext)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false);
   const handleShow = ()=> setShow(true)
@@ -16,7 +16,7 @@ const EmployeeList = () => {
 
   useEffect(() => {
       handleClose();
-  }, [employees])
+  }, [sortedEmployees])
 
   const myRef = useRef(null);
   console.log(myRef.current);
@@ -52,7 +52,7 @@ const EmployeeList = () => {
           </thead>
           <tbody>
           {
-                    employees.sort((a,b) => (a.name < b.name ? -1 : 1 )).map((employee) =>(
+                    sortedEmployees.map((employee) =>(
                         <tr key={employee.id}>
                             <Employee employee={employee} />
                         </tr>
@@ -86,3 +86,4 @@ const EmployeeList = () => {
 export default EmployeeList;
 
 // .sort((a,b) => a.name.localeCompare(b.name))
+// .sort((a,b) => (a.name < b.name ? -1 : 1 ))
