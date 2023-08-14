@@ -3,6 +3,7 @@ import Employee from './Employee.jsx';
 import { Button, Modal, Alert } from 'react-bootstrap';
 import { EmployeeContext } from '../context/EmployeeContext.jsx';
 import AddForm from './AddForm.jsx';
+import Pagination from './Pagination.jsx';
 
 
 
@@ -80,6 +81,9 @@ const EmployeeList = () => {
                 }
           </tbody>
       </table>
+
+      <Pagination/>
+      
       <Modal show={show} onHide={handleClose}>
             <Modal.Header className="modal-header m-3 " closeButton>
                 <Modal.Title>
