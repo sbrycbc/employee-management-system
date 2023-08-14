@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import React, { useContext, useEffect, useState, useReducer } from 'react';
 import Employee from './Employee.jsx';
 import { Button, Modal, Alert } from 'react-bootstrap';
 import { EmployeeContext } from '../context/EmployeeContext.jsx';
@@ -37,19 +37,36 @@ const EmployeeList = () => {
       }
   }, [sortedEmployees])
 
-  const myRef = useRef(null);
+ /*  const myRef = useRef(null);
   console.log(myRef.current);
 
   const onButtonClick = () => {
       console.log(myRef.current);
       myRef.current.focus();
-  }
+  } */
 
 
   const indexOfLastEmployee = currentPage * employeesPerPage;
   const indexOfFirstEmployee = indexOfLastEmployee - employeesPerPage;
   const currentEmployees = sortedEmployees.slice(indexOfFirstEmployee, indexOfLastEmployee);
   const totalPagesNum = Math.ceil(sortedEmployees.length /employeesPerPage)
+
+  const reducer = (state, action) => {
+    switch(action.type) {
+      case 'increment':
+        return { count: state.count +1 }
+
+      case 'decrement':
+        return { count: state.count -1 }  
+
+      default:
+        throw new Error();
+    }
+
+  }
+
+  const initialState = { count : 0} ;        //  yapmasini istedgimiz,  baslangic //
+  const [state, dispatch] = useReducer(reducer, initialState)
 
 
   return (
@@ -97,6 +114,11 @@ const EmployeeList = () => {
             sortedEmployees = {sortedEmployees}
             />
 
+      Count : {state.count}
+      <button onClick= {() => dispatch({type: 'increment'})}>+</button>
+      <button onClick= {() => dispatch({type: 'decrement'})}>-</button>
+
+
       <Modal show={show} onHide={handleClose}>
             <Modal.Header className="modal-header m-3 " closeButton>
                 <Modal.Title>
@@ -112,9 +134,9 @@ const EmployeeList = () => {
                 </Button>
             </Modal.Footer>
         </Modal>
-
+{/* 
         <input ref={myRef} type="text"></input>
-        <button onClick={onButtonClick}>Focus Input</button>
+        <button onClick={onButtonClick}>Focus Input</button> */}
 
   </>
   )
