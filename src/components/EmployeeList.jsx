@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useReducer } from 'react';
+import React, { useContext, useEffect, useState, useReducer, useRef} from 'react';
 import Employee from './Employee.jsx';
 import { Button, Modal, Alert } from 'react-bootstrap';
 import { EmployeeContext } from '../context/EmployeeContext.jsx';
@@ -37,13 +37,13 @@ const EmployeeList = () => {
       }
   }, [sortedEmployees])
 
- /*  const myRef = useRef(null);
+   const myRef = useRef(null);
   console.log(myRef.current);
 
   const onButtonClick = () => {
       console.log(myRef.current);
       myRef.current.focus();
-  } */
+  } 
 
 
   const indexOfLastEmployee = currentPage * employeesPerPage;
@@ -65,8 +65,9 @@ const EmployeeList = () => {
 
   }
 
-  const initialState = { count : 0} ;        //  yapmasini istedgimiz,  baslangic //
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const initialState = { count : 0} 
+                                    // yapmasini istedgimiz,  baslangic //
+  const [state, dispatch] = useReducer(reducer,               initialState)
 
 
   return (
@@ -114,11 +115,7 @@ const EmployeeList = () => {
             sortedEmployees = {sortedEmployees}
             />
 
-      Count : {state.count}
-      <button onClick= {() => dispatch({type: 'increment'})}>+</button>
-      <button onClick= {() => dispatch({type: 'decrement'})}>-</button>
-
-
+    
       <Modal show={show} onHide={handleClose}>
             <Modal.Header className="modal-header m-3 " closeButton>
                 <Modal.Title>
@@ -134,10 +131,16 @@ const EmployeeList = () => {
                 </Button>
             </Modal.Footer>
         </Modal>
-{/* 
+       <div className='myref mt-5'>
         <input ref={myRef} type="text"></input>
-        <button onClick={onButtonClick}>Focus Input</button> */}
+        <button onClick={onButtonClick}>Focus Input</button> 
+        </div>
 
+      <div className='count mt-5'>
+       Count : {state.count}
+      <button className='count_button' onClick= {() => dispatch({type: 'increment'})}>+</button>
+      <button className='count_button' onClick= {() => dispatch({type: 'decrement'})}>-</button>
+      </div>
   </>
   )
 }

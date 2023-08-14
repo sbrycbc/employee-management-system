@@ -136,4 +136,10 @@ table.table .avatar {
 	float: left;
 	margin-top: 10px;
 	font-size: 13px;
-}   
+}  
+
+.count_button {
+    margin: 5px;
+	width: 30px;
+	
+}
