@@ -6,10 +6,10 @@ import { useContext, useState } from 'react';
 const AddForm = () => {
 
 
-  // --- WITH useState() ----  // 
+        // --- WITH useState() ----  // 
  // const { addEmployee } = useContext(EmployeeContext);
 
-  // --- WITH useReduce() ----  // 
+        // --- WITH useReduce() ----  // 
     const { dispatch} = useContext(EmployeeContext);
 
 
