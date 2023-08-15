@@ -5,7 +5,13 @@ import { useContext, useState } from 'react';
 
 const AddForm = () => {
 
-    const { addEmployee } = useContext(EmployeeContext);
+
+  // --- WITH useState() ----  // 
+ // const { addEmployee } = useContext(EmployeeContext);
+
+  // --- WITH useReduce() ----  // 
+    const { dispatch} = useContext(EmployeeContext);
+
 
     /* const [ name, setName ] = useState("");
     const [ email, setEmail ] = useState("");
@@ -24,7 +30,10 @@ const AddForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addEmployee(name, email, address, phone)
+        //addEmployee(name, email, address, phone) // useState()
+        dispatch({type: 'add_employee', employee : {
+            name, email, address, phone
+        }})
     }
 
   return (
