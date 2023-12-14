@@ -10,7 +10,7 @@ Dieses Projekt enthält eine Anwendung zur Verwaltung von Mitarbeitern, die mit 
 
 ## Installation und Ausführung
 
-1. Projekt klonen: `git clone https://github.com/sbrycbc/delish-deliveries.git`
+1. Projekt klonen: `git clone https://github.com/sbrycbc/employee-management-system`
 2. In das Projektverzeichnis wechseln: `cd proje-name`
 3. Erforderliche Abhängigkeiten installieren: `npm install`
 4. Anwendung starten: `npm start`
